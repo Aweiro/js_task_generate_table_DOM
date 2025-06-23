@@ -358,7 +358,6 @@ const people = [
 const dashboard = document.querySelector('.dashboard');
 
 for (const key of people) {
-  const target = dashboard.querySelector('tr');
   const newTr = document.createElement('tr');
   const { sex, born, died } = key;
   const age = died - born;
@@ -366,13 +365,13 @@ for (const key of people) {
   const gender = sex === 'm' ? 'Male' : 'Female';
   const arr = [];
 
-  target.insertAdjacentElement('afterend', newTr);
+  dashboard.appendChild(newTr);
   arr.push(key.name, gender, born, died, age, century);
 
   for (let i = 0; i < 6; i++) {
     const newTd = document.createElement('td');
 
-    newTr.insertAdjacentElement('beforeend', newTd);
+    newTr.appendChild(newTd);
     newTd.textContent = arr[i];
   }
 }
